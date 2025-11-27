@@ -1,0 +1,142 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f7ff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 950px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.card {
+    display: flex;
+    min-height: 530px;
+}
+
+.left, .right {
+    flex: 1;
+    padding: 50px;
+}
+
+.right {
+    background: linear-gradient(135deg, #7a49ff, #9b4dff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-left: 0;
+    position: relative;
+}
+
+.right::before {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 200px;
+    top: -70px;
+    left: -10%;
+    background: white;
+    border-radius: 50%;
+}
+
+h2 {
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #f3f5ff;
+    padding: 12px 15px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    border: none;
+    background: none;
+    outline: none;
+    flex: 1;
+    font-size: 15px;
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.checkbox-label {
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.checkbox-label input {
+    margin-right: 5px;
+}
+
+.checkbox-label a {
+    color: #7a49ff;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #7a49ff, #965cff);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 30px;
+    width: 80%;
+    margin: 10px auto;
+    display: block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+.switch-text {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.switch-text a {
+    color: #7a49ff;
+    font-weight: bold;
+}
+
+@media (max-width: 850px) {
+    .card {
+        flex-direction: column;
+    }
+    .right {
+        display: none;
+    }
+}
+.input-group input {
+    border: none;
+    background: none;
+    outline: none;
+    flex: 1;
+    font-size: 15px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
