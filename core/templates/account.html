@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Mon Compte{% endblock %}
+
+{% block content %}
+<div class="container-account">
+    <div class="card-account">
+        <h2>💳 Mon Compte</h2>
+        <p>Titulaire : <strong>{{ request.user.username }}</strong></p>
+        <p>Numéro de compte : <strong>{{ account.account_number }}</strong></p>
+        <p>Solde actuel :</p>
+        <h1 class="balance">{{ account.balance }} €</h1>
+        <a href="{% url 'transfer' %}" class="btn-primary">Effectuer un virement</a>
+    </div>
+</div>
+{% endblock %}

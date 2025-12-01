@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Virement - DjanPay{% endblock %}
+
+{% block content %}
+<div class="transfer-container">
+    <div class="transfer-card">
+
+        <h2 class="transfer-title">💸 Effectuer un virement</h2>
+        <p class="balance-text">Solde disponible : <strong>{{ balance }} €</strong></p>
+
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="post" autocomplete="off">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label>Destinataire (nom d'utilisateur)</label>
+                {{ form.receiver_username }}
+            </div>
+
+            <div class="form-group">
+                <label>Montant (€)</label>
+                {{ form.amount }}
+            </div>
+
+            <div class="form-group">
+                <label>Description (optionnel)</label>
+                {{ form.description }}
+            </div>
+
+            {% if form.errors %}
+                <div class="error-box">
+                    <p>⚠ Merci de corriger les erreurs ci-dessous :</p>
+                    {{ form.errors }}
+                </div>
+            {% endif %}
+
+            <button type="submit" class="btn-primary">✨ Confirmer le virement</button>
+            <a href="{% url 'home' %}" class="btn-secondary">⬅ Retour</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

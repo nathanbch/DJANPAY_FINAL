@@ -10,11 +10,18 @@
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
 
     <main>
         {% block content %}{% endblock %}
-    </main>
+
 
 </body>
+<footer>
+    <a href="{% url 'mentions_legales' %}">Mentions légales</a> |
+    <a href="{% url 'politique_confidentialite' %}">Politique de Confidentialité</a> |
+    <a href="{% url 'conditions_generales' %}">CGU</a>
+</footer>
+    </main>
 </html>

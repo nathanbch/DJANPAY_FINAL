@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Créer un utilisateur{% endblock %}
+
+{% block content %}
+<h2>Créer un nouvel utilisateur</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Nom d'utilisateur :</label>
+    <input type="text" name="username" required><br><br>
+
+    <label>Mot de passe :</label>
+    <input type="password" name="password" required><br><br>
+
+    <label>Est-ce un admin ?</label>
+    <input type="checkbox" name="is_staff"><br><br>
+
+    <button type="submit">Créer l'utilisateur</button>
+</form>
+
+<br>
+<a href="{% url 'admin_panel' %}">⬅️ Retour au panneau admin</a>
+{% endblock %}
+    

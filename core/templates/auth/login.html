@@ -7,33 +7,43 @@
 <div class="container">
     <div class="card">
 
+        <!-- Colonne gauche : formulaire -->
         <div class="left">
             <h2>Content de te revoir !</h2>
             <p>Connecte-toi pour accéder à ton espace bancaire sécurisé.</p>
+
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <p class="message {{ message.tags }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
             
-            <form method="POST">
+            <form method="POST" action="{% url 'login' %}" autocomplete="off">
                 {% csrf_token %}
-                
-                 <div class="input-group">
+
+                <div class="input-group">
                     <span class="icon">👤</span>
-                    <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                    <input type="text" name="username" placeholder="Nom d'utilisateur" required autocomplete="username">
                 </div>
 
                 <div class="input-group">
                     <span class="icon">🔒</span>
-                    <input type="password" name="password" placeholder="Mot de passe" required>
+                    <input type="password" name="password" placeholder="Mot de passe" required autocomplete="current-password">
                 </div>
 
-                {% if form.errors %}
-                    <p class="error">Identifiants incorrects. Veuillez réessayer.</p>
+                {% if form and form.errors %}
+                    <p class="error">⚠️ Identifiants incorrects. Réessaie.</p>
                 {% endif %}
 
                 <button type="submit" class="btn-primary">SE CONNECTER</button>
             </form>
         </div>
 
+        <!-- Colonne droite -->
         <div class="right">
-            <h2>Bienvenue 👋</h2>
+            <h2>Bienvenue</h2>
             <p>Votre sécurité est notre priorité. Accédez à vos services bancaires.</p>
         </div>
 

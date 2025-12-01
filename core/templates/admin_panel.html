@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Admin Panel{% endblock %}
+
+{% block content %}
+<h2>Panneau d'administration</h2>
+<p>Bienvenue {{ request.user.username }} (Admin)</p>
+
+<a href="{% url 'create_user' %}" class="btn-primary">➕ Ajouter un utilisateur</a>
+
+<h3>Liste des utilisateurs :</h3>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID</th><th>Nom d'utilisateur</th><th>Admin ?</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.is_staff }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="{% url 'logout' %}">🚪 Logout</a>
+{% endblock %}

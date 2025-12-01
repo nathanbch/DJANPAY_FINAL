@@ -87,7 +87,7 @@
                         <p>Consulter mon solde</p>
                     </a>
 
-                    <a href="#" class="menu-item">
+                    <a href="{% url 'transfer' %}" class="menu-item">
                         <div class="icon">💸</div>
                         <h3>Transferts</h3>
                         <p>Effectuer un virement</p>
@@ -121,5 +121,22 @@
             Développé avec Django & SQLite
         </p>
     </footer>
+
+    {% if user.is_authenticated %}
+    <a href="{% url 'dashboard' %}" class="btn">📊 Accéder au tableau de bord</a>
+    <a href="{% url 'logout' %}" class="btn btn-danger">🚪 Déconnexion</a>
+
+    <form action="{% url 'delete_account' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-warning">🗑️ Supprimer mon compte</button>
+    </form>
+    {% endif %}
+
+    <div class="legal-links">
+        <a href="{% url 'mentions_legales' %}">📄 Mentions légales</a> |
+        <a href="{% url 'politique_confidentialite' %}">🔒 Politique de Confidentialité</a> |
+        <a href="{% url 'conditions_generales' %}">📘 CGU</a>
+    </div>    
+
 </body>
 </html>

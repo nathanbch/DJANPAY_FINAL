@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Tableau de Bord Administrateur{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">DP</div>
+            <div class="sidebar-title">
+                <span class="sidebar-title-main">DjanPay</span>
+                <span class="sidebar-title-sub">Administration</span>
+            </div>
+        </div>
+
+        <span class="sidebar-badge">Admin</span>
+
+        <div>
+            <p class="sidebar-section-label">Menu</p>
+            <nav class="sidebar-nav">
+                <a href="{% url 'dashboard' %}" class="sidebar-link sidebar-link-active"><span class="sidebar-link-icon">🏠</span>Dashboard</a>
+                <a href="{% url 'admin_panel' %}" class="sidebar-link"><span class="sidebar-link-icon">👥</span>Gérer les utilisateurs</a>
+                <a href="#" class="sidebar-link"><span class="sidebar-link-icon">💳</span>Transactions globales</a>
+                <a href="#" class="sidebar-link"><span class="sidebar-link-icon">🔐</span>Audit de sécurité</a>
+                <a href="#" class="sidebar-link"><span class="sidebar-link-icon">⚙️</span>Paramètres système</a>
+            </nav>
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-user">
+                <div class="sidebar-user-avatar">{{ user.username|first|upper }}</div>
+                <div class="sidebar-user-info">
+                    <span class="sidebar-user-name">{{ user.username }}</span>
+                    <span class="sidebar-user-role">Administrateur</span>
+                </div>
+            </div>
+            <a href="{% url 'logout' %}" class="logout-btn">🚪 Déconnexion</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Header -->
+        <div class="main-header">
+            <div class="main-header-left">
+                <div class="main-title-row">
+                    <span class="main-title-icon">👨‍💼</span>
+                    <span class="main-title-text">Tableau de Bord Administrateur</span>
+                </div>
+                <span class="main-subtitle">Gérez les utilisateurs, les comptes et la sécurité du système.</span>
+            </div>
+        </div>
+
+        <!-- Metrics -->
+        <div class="metric-row">
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-label">Utilisateurs</span>
+                </div>
+                <div class="metric-value-row">
+                    <span class="metric-main-value">32</span>
+                    <span class="metric-trend metric-trend-up">+5%</span>
+                </div>
+                <div class="metric-footer">Nouveaux cette semaine</div>
+                <div class="metric-bar"><div class="metric-bar-fill"></div></div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-label">Transactions</span>
+                </div>
+                <div class="metric-value-row">
+                    <span class="metric-main-value">158</span>
+                    <span class="metric-trend metric-trend-up">+12%</span>
+                </div>
+                <div class="metric-footer">Traitées aujourd'hui</div>
+                <div class="metric-bar"><div class="metric-bar-fill-blue"></div></div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-label">Alertes Sécurité</span>
+                </div>
+                <div class="metric-value-row">
+                    <span class="metric-main-value">3</span>
+                    <span class="metric-trend metric-trend-down">-2</span>
+                </div>
+                <div class="metric-footer">Dernières 24h</div>
+                <div class="metric-bar"><div class="metric-bar-fill-red"></div></div>
+            </div>
+        </div>
+
+        <!-- Action Cards -->
+        <section class="cards">
+            <div class="card">
+                <h3>👥 Gestion des Utilisateurs</h3>
+                <p>Créer, modifier et supprimer des comptes utilisateurs.</p>
+                <a href="{% url 'admin_panel' %}" class="action-btn">Accéder ➤</a>
+            </div>
+
+            <div class="card">
+                <h3>💳 Historique des Transactions</h3>
+                <p>Visualisez les virements bancaires globaux.</p>
+                <a href="#" class="action-btn">Accéder ➤</a>
+            </div>
+
+            <div class="card">
+                <h3>🔐 Audit de Sécurité</h3>
+                <p>Consultez les logs de sécurité et alertes.</p>
+                <a href="#" class="action-btn">Accéder ➤</a>
+            </div>
+
+            <div class="card">
+                <h3>⚙️ Paramètres du système</h3>
+                <p>Maintenance, accès et configuration.</p>
+                <a href="#" class="action-btn">Accéder ➤</a>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+{% endblock %}

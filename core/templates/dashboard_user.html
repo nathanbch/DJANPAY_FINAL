@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2 class="logo">Djan<span>Pay</span></h2>
+        <nav>
+            <a href="{% url 'dashboard' %}">🏠 Tableau de bord</a>
+            <a href="{% url 'account' %}">💰 Mon Compte</a>
+            <a href="{% url 'transfer' %}">💸 Virement</a>
+            <a href="{% url 'history' %}">📜 Historique</a>
+            <a href="{% url 'profile' %}">👤 Profil</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <h2>Bienvenue, {{ user.username }}</h2>
+            <a href="{% url 'logout' %}" class="logout-btn">🚪 Déconnexion</a>
+        </header>
+
+        <!-- Informations utilisateur -->
+        <section class="user-summary">
+            <h3>Mes informations</h3>
+            <div class="summary-grid">
+                <div class="info-card">
+                    <p><strong>👤 Nom d'utilisateur :</strong></p>
+                    <p>{{ user.username }}</p>
+                </div>
+                <div class="info-card">
+                    <p><strong>📧 Email :</strong></p>
+                    <p>{{ user.email|default:"Non renseigné" }}</p>
+                </div>
+                <div class="info-card">
+                    <p><strong>💼 Type de compte :</strong></p>
+                    <p>Utilisateur</p>
+                </div>
+                <div class="info-card">
+                    <p><strong>💳 Solde actuel :</strong></p>
+                    <p>{{ account.balance }} €</p>
+                </div>
+            </div>
+            <div class="btn-group">
+                <a href="{% url 'profile' %}" class="btn-primary">Modifier mes informations</a>
+                <a href="{% url 'delete_account' %}" class="btn-danger">Supprimer mon compte</a>
+            </div>
+        </section>
+
+        <!-- Actions rapides -->
+        <section class="cards">
+            <div class="card quick-action">
+                <h3>💸 Effectuer un virement</h3>
+                <a href="{% url 'transfer' %}" class="action-btn">➤ Commencer</a>
+            </div>
+            <div class="card quick-action">
+                <h3>📜 Historique des opérations</h3>
+                <a href="{% url 'history' %}" class="action-btn">📄 Voir</a>
+            </div>
+        </section>
+
+    </main>
+</div>
+{% endblock %}
